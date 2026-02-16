@@ -1,94 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Student Table</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 70%;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #e6e6e6;
-        }
-    </style>
+    <title>Arithmetic Calculator - Switch Case</title>
 </head>
 <body>
 
-<h2>Student Information Table</h2>
+    <h2>Arithmetic Calculator (Using Switch Case)</h2>
 
-<table>
-    <tr>
-        <th>Sr. No.</th>
-        <th>Name</th>
-        <th>Roll No.</th>
-        <th>Mobile No.</th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>Amit </td>
-        <td>101</td>
-        <td>9876543210</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Priya </td>
-        <td>102</td>
-        <td>9123456789</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>Varun</td>
-        <td>103</td>
-        <td>9988776655</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>Neha </td>
-        <td>104</td>
-        <td>9090909090</td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>Rohit </td>
-        <td>105</td>
-        <td>9012345678</td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>Anjali </td>
-        <td>106</td>
-        <td>9345678901</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Suresh </td>
-        <td>107</td>
-        <td>9567890123</td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Kavita </td>
-        <td>108</td>
-        <td>9789012345</td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Manoj </td>
-        <td>109</td>
-        <td>9890123456</td>
-    </tr>
-    <tr>
-        <td>10</td>
-        <td>Pooja </td>
-        <td>110</td>
-        <td>9701234567</td>
-    </tr>
-</table>
+    <label>Enter First Number:</label>
+    <input type="number" id="num1"><br><br>
+
+    <label>Enter Second Number:</label>
+    <input type="number" id="num2"><br><br>
+
+    <label>Select Operation:</label>
+    <select id="operator">
+        <option value="+">Addition (+)</option>
+        <option value="-">Subtraction (-)</option>
+        <option value="*">Multiplication (*)</option>
+        <option value="/">Division (/)</option>
+    </select><br><br>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        function calculate() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let operator = document.getElementById("operator").value;
+            let result;
+
+            switch(operator) {
+                case "+":
+                    result = num1 + num2;
+                    break;
+
+                case "-":
+                    result = num1 - num2;
+                    break;
+
+                case "*":
+                    result = num1 * num2;
+                    break;
+
+                case "/":
+                    if (num2 === 0) {
+                        result = "Cannot divide by zero!";
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+
+                default:
+                    result = "Invalid operator";
+            }
+
+            document.getElementById("result").innerHTML = "Result: " + result;
+        }
+    </script>
 
 </body>
 </html>
